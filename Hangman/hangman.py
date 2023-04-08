@@ -1,24 +1,53 @@
 import random
 
 #Step 1
-
+display = []
 word_list = ["aardvark", "baboon", "camel", "swallow", "bungee", "cheese", "famine", "death","quince"]
-
 
 #Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 chosen_word = random.choice(word_list)
-print(chosen_word)
+
+
+
+# print(chosen_word)
 
 # Ask the user to guess a letter and assign their answer to a variable called guess
 
-guess = input("Welcome to hangman hame guess a letter").lower()
+guess = input("Welcome to Hangman Game! Guess a letter.\n").lower()
 
-print(guess)
+# print(guess)
 
 # Check if the letter the user guessed (guess) is one of the letters in the chosen_word
 
-if guess in chosen_word:
-      print("The letter {} is in the chosen word.".format(guess))
-else:
-    print("The letter {} is not in the chosen word.".format(guess))
+for letter in chosen_word:
+      if letter == guess:
+       print("Right")
+      else:
+       print("Wrong")
+
+# Step 2
+# Create an empty List called display.
+#For each letter in the chosen_word, add a "_" to 'display'.
+
+for word in chosen_word:
+   display.append("_")
+  
+print(display)
+
+
+
+# Loop through each position in the chosen_word
+
+for i in range(len(chosen_word)):
+   
+   if chosen_word[i] == guess:
+      display[i] = guess
+
+print(display)      
+
+    
+
+
+
+
 
