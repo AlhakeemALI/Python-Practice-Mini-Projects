@@ -1,49 +1,34 @@
 import random
-
-#Step 1
+import hangman_words
+import hangman_art
+print(hangman_art.logo)
+chosen_word = random.choice(hangman_words.word_list)
 display = []
-word_list = ["aardvark", "baboon", "camel", "swallow", "bungee", "cheese", "famine", "death","quince"]
-
-#Randomly choose a word from the word_list and assign it to a variable called chosen_word.
-chosen_word = random.choice(word_list)
-
-
-
-# print(chosen_word)
-
-# Ask the user to guess a letter and assign their answer to a variable called guess
-
-guess = input("Welcome to Hangman Game! Guess a letter.\n").lower()
-
-# print(guess)
-
-# Check if the letter the user guessed (guess) is one of the letters in the chosen_word
-
-for letter in chosen_word:
-      if letter == guess:
-       print("Right")
-      else:
-       print("Wrong")
-
-# Step 2
-# Create an empty List called display.
-#For each letter in the chosen_word, add a "_" to 'display'.
-
+lives = 6
 for word in chosen_word:
    display.append("_")
-  
-print(display)
+print(chosen_word)
+game_over = False
+while not game_over:
+    guess = input("Welcome to Hangman Game! Guess a letter.\n").lower()
+
+    for i in range(len(chosen_word)):
+              if chosen_word[i] == guess:
+                display[i] = guess
+    print(display)  
+    if guess not in chosen_word:
+         lives -= 1
+         if lives == 0:
+              game_over = True
+              print("You lose.")
+    if "_" not in display:
+          game_over = True
+          print("You Win")
+    print(hangman_art.stages[lives])      
+    
 
 
-
-# Loop through each position in the chosen_word
-
-for i in range(len(chosen_word)):
-   
-   if chosen_word[i] == guess:
-      display[i] = guess
-
-print(display)      
+ 
 
     
 
