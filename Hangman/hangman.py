@@ -11,7 +11,6 @@ print(chosen_word)
 game_over = False
 while not game_over:
     guess = input("Welcome to Hangman Game! Guess a letter.\n").lower()
-
     for i in range(len(chosen_word)):
               if chosen_word[i] == guess:
                 display[i] = guess
